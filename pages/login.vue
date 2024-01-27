@@ -35,7 +35,7 @@ const onSubmit = async () => {
     <label class="label">
       <span>Password</span>
       <input class="input" v-model="password" :type="isPasswordVisible ? 'text' : 'password'" />
-      <button class="password-btn" @click="isPasswordVisible = !isPasswordVisible">
+      <button type="button" class="password-btn" @click="isPasswordVisible = !isPasswordVisible">
         {{ !isPasswordVisible ? '🙈' : '🐵' }}
       </button>
     </label>
