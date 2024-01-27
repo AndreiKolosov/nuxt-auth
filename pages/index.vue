@@ -1,12 +1,6 @@
-<script setup lang='ts'>
-const { getContacts } = useApi();
-
-const { data, error } = useAsyncData('cases', getContacts)
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <h1 class="title">Home page</h1>
-  {{ data }} {{ error }}
+  <p class="text">Simple auth example with Nuxt 3</p>
 </template>
-
-<style scoped></style>
