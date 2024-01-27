@@ -20,6 +20,9 @@ export const useApi = () => {
 
   const login = ({ email, password }: { email: string; password: string }) =>
     $fetch(`${apiUrl}${API_ROUTES.LOGIN}`, {
+      headers: {
+        'mode': 'no-cors'
+      },
       method: 'POST',
       body: {
         email,
