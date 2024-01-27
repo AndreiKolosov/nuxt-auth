@@ -2,13 +2,18 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   telemetry: false,
-  typescript: {shim: false},
+  typescript: { shim: false },
   app: {
     head: {
       htmlAttrs: {
-        lang: 'ru'
-      }
-    }
+        lang: 'ru',
+      },
+    },
+  },
+  runtimeConfig: {
+    public: {
+      apiUrl: 'http://localhost:3000/',
+    },
   },
   css: ['~/assets/global.css'],
-})
+});

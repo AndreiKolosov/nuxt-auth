@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { APP_ROUTES } from '~/utils/constants';
-</script>
-
 <template>
   <header class="header">
     <nav class="nav">
