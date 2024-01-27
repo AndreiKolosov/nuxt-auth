@@ -44,9 +44,11 @@ import { APP_ROUTES } from '~/utils/constants';
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  align-items: start;
+  align-content: start;
   flex: 1;
+  padding: 0 40px;
 }
 
 .header__loginLink {

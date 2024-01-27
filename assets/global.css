@@ -44,3 +44,14 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--color-primary, #fff) !important;
   caret-color: var(--color-primary, #fff);
 }
+
+.title {
+  justify-self: center;
+  padding: 40px 60px;
+}
+
+.text {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+}
