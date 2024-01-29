@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const user = useUser();
+</script>
+
 <template>
   <header class="header">
     <nav class="nav">
@@ -6,7 +10,10 @@
       <NuxtLink class="nav__link" :to="APP_ROUTES.CASES">Cases</NuxtLink>
       <NuxtLink class="nav__link" :to="APP_ROUTES.CONTACTS">Contacts</NuxtLink>
     </nav>
-    <NuxtLink class="header__loginLink" :to="APP_ROUTES.LOGIN">Log in</NuxtLink>
+    <div class="header__container">
+      <p v-if="user" class="text">{{ user.name }} {{user.surname}}</p>
+      <NuxtLink class="header__loginLink" :to="APP_ROUTES.LOGIN">Log in</NuxtLink>
+    </div>
   </header>
   <main class="main">
     <slot />
@@ -58,5 +65,11 @@
 }
 .header__loginLink:hover {
   transform: scale(0.97);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
 }
 </style>

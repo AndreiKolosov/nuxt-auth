@@ -55,3 +55,10 @@ select:-webkit-autofill:focus {
   font-style: normal;
   font-size: 22px;
 }
+
+.response {
+  color: #fff;
+  font-size: 18px;
+  padding: 32px;
+  border: 1px solid seagreen;
+}

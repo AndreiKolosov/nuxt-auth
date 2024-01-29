@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware(() => {
- const isAuth = true;
+ const user = useUser();
 
- if(!isAuth) {
-  return navigateTo(APP_ROUTES.ROOT)
+ if(!user.value) {
+  return navigateTo(APP_ROUTES.LOGIN)
  }
 });

@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const api = useApi();
+const user = useUser();
+const token = useCookie('token', {
+  path: '/',
+  maxAge: 86400,
+});
 
 const isPasswordVisible = ref<boolean>(false);
 
@@ -7,18 +12,31 @@ const email = ref<string>('');
 const password = ref<string>('');
 
 const onSubmit = async () => {
-  api
-    .login({ email: email.value, password: password.value })
-    .then((res) => {
-      console.log(res);
-    })
-    .then(() => {
-      email.value = '';
-      password.value = '';
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+  token.value =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHBzOi8vbWVzdG9hcGkuZnJpZW5kbGVlLnJ1L2FwaS9sb2dpbiIsImlhdCI6MTcwNjUxMTI1OCwiZXhwIjoxNzA2NTE0ODU4LCJuYmYiOjE3MDY1MTEyNTgsImp0aSI6IjBzS1VUUEVXYUcwSnREMGQifQ.RHAHwNw_niXuve0whuJf7Nizrcp0ZIk9xOGYUPJVO18';
+
+  user.value = {
+    id: 1,
+    name: 'Test',
+    surname: 'Person',
+    username: 'testperson@friendlee.ru',
+    email: 'testperson@friendlee.ru',
+    is_activated: false,
+  };
+  
+  // api
+  //   .login({ email: email.value, password: password.value })
+  //   .then((res) => {
+  //     token.value = res.token;
+  //     user.value = res.user;
+  //   })
+  //   .then(() => {
+  //     email.value = '';
+  //     password.value = '';
+  //   })
+  //   .catch((e) => {
+  //     console.error(e);
+  //   });
 };
 </script>
 
