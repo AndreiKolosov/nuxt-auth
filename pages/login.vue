@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const api = useApi();
+const { $api } = useNuxtApp();
 const user = useUser();
 const token = useCookie('token', {
   path: '/',
@@ -12,31 +12,24 @@ const email = ref<string>('');
 const password = ref<string>('');
 
 const onSubmit = async () => {
-  token.value =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHBzOi8vbWVzdG9hcGkuZnJpZW5kbGVlLnJ1L2FwaS9sb2dpbiIsImlhdCI6MTcwNjUxMTI1OCwiZXhwIjoxNzA2NTE0ODU4LCJuYmYiOjE3MDY1MTEyNTgsImp0aSI6IjBzS1VUUEVXYUcwSnREMGQifQ.RHAHwNw_niXuve0whuJf7Nizrcp0ZIk9xOGYUPJVO18';
-
-  user.value = {
-    id: 1,
-    name: 'Test',
-    surname: 'Person',
-    username: 'testperson@friendlee.ru',
-    email: 'testperson@friendlee.ru',
-    is_activated: false,
+  const credentials = {
+    email: email.value,
+    password: password.value,
   };
-  
-  // api
-  //   .login({ email: email.value, password: password.value })
-  //   .then((res) => {
-  //     token.value = res.token;
-  //     user.value = res.user;
-  //   })
-  //   .then(() => {
-  //     email.value = '';
-  //     password.value = '';
-  //   })
-  //   .catch((e) => {
-  //     console.error(e);
-  //   });
+
+  $api
+    .login(credentials)
+    .then((res) => {
+      token.value = res.token;
+      user.value = res.user;
+    })
+    .then(() => {
+      email.value = '';
+      password.value = '';
+    })
+    .catch((e) => {
+      console.error(e);
+    });
 };
 </script>
 

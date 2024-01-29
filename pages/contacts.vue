@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const api = useApi();
-const { data, error } = useAsyncData('contacts', api.getContacts);
+const { $api } = useNuxtApp();
+const { data, error } = useAsyncData('contacts', () => $api.getContacts());
 </script>
 
 <template>

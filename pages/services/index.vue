@@ -2,9 +2,9 @@
 definePageMeta({
   middleware: ['auth-check']
 })
-
-const api = useApi();
-const { data, error } = useAsyncData('cases', api.getServices);
+const token = useCookie('token')
+const { $api } = useNuxtApp();
+const { data, error } = useAsyncData('cases', () => $api.getServices(token.value || ''));
 </script>
 
 <template>

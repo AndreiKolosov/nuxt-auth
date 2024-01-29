@@ -1,17 +1,19 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 definePageMeta({
-  middleware: ['auth-check']
-})
+  middleware: ['auth-check'],
+});
 
-const route = useRoute()
-const api = useApi();
+const route = useRoute();
+const id = route.params.id as string;
+const token = useCookie('token');
+const { $api } = useNuxtApp();
 
-const { data, error } = useAsyncData('cases', () => api.getCaseById(route.params.id as string));
+const { data, error } = useAsyncData(`cases-${id}`, () => $api.getCaseById({ id, token: token.value || '' }));
 </script>
 
 <template>
   <h1 class="title">Case page</h1>
-  <p class="text">Case <code>id</code> from route params is: "{{route.params.id}}"</p>
+  <p class="text">Case <code>id</code> from route params is: "{{ id }}"</p>
 
   <pre class="response">
     {{ JSON.stringify(data ?? error, null, 4) }}
