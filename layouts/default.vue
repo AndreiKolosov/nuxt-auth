@@ -11,7 +11,7 @@ const user = useUser();
       <NuxtLink class="nav__link" :to="APP_ROUTES.CONTACTS">Contacts</NuxtLink>
     </nav>
     <div class="header__container">
-      <p v-if="user" class="text">{{ user.name }} {{user.surname}}</p>
+      <p v-if="user" class="text">{{ user.name }} {{ user.surname }}</p>
       <NuxtLink class="header__loginLink" :to="APP_ROUTES.LOGIN">Log in</NuxtLink>
     </div>
   </header>
