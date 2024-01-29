@@ -8,7 +8,7 @@ const id = route.params.id as string;
 const token = useCookie('token');
 const { $api } = useNuxtApp();
 
-const { data, error } = useAsyncData(`case-${id}`, () =>
+const { data, error } = await useAsyncData(`case-${id}`, () =>
   $api.getServiceById({ id, token: token.value || '' }),
 );
 </script>

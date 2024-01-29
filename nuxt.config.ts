@@ -16,4 +16,7 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/global.css'],
+  routeRules: {
+    // '/contacts': { prerender: true },
+  },
 });

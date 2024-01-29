@@ -1,6 +1,10 @@
 <script setup lang="ts">
-const { $api } = useNuxtApp();
-const { data, error } = useAsyncData('contacts', () => $api.getContacts());
+const nuxtApp = useNuxtApp();
+const { data, error } = await useAsyncData('contacts', () => nuxtApp.$api.getContacts(), {
+  getCachedData(key) {
+    return nuxtApp.payload.data[key] ?? nuxtApp.static.data[key];
+  },
+});
 </script>
 
 <template>

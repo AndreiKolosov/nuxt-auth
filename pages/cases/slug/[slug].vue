@@ -8,7 +8,7 @@ const slug = route.params.slug as string;
 const token = useCookie('token');
 const { $api } = useNuxtApp();
 
-const { data, error } = useAsyncData(`cases-${slug}`, () => $api.getCaseBySlug({ slug, token: token.value || '' }));
+const { data, error } = await useAsyncData(`cases-${slug}`, () => $api.getCaseBySlug({ slug, token: token.value || '' }));
 </script>
 
 <template>

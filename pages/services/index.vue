@@ -4,7 +4,7 @@ definePageMeta({
 })
 const token = useCookie('token')
 const { $api } = useNuxtApp();
-const { data, error } = useAsyncData('cases', () => $api.getServices(token.value || ''));
+const { data, error } = await useAsyncData('cases', () => $api.getServices(token.value || ''));
 </script>
 
 <template>
