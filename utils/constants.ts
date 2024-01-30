@@ -7,13 +7,13 @@ export const APP_ROUTES = {
 } as const;
 
 export const API_ROUTES = {
-  SERVICES: '/services',
-  CASES: '/cases',
-  CASES_SLUG: '/cases/slug',
-  PARTNERS: '/partners',
-  PRINCIPLES: '/principles',
-  POLICIES: '/policies',
-  CONTACTS: '/contacts',
-  FEEDBACK: '/feedback',
+  SERVICES: '/v1/services',
+  CASES: '/v1/cases',
+  CASES_SLUG: '/v1/cases/slug',
+  PARTNERS: '/v1/partners',
+  PRINCIPLES: '/v1/principles',
+  POLICIES: '/v1/policies',
+  CONTACTS: '/v1/contacts',
+  FEEDBACK: '/v1/feedback',
   LOGIN: '/login',
 } as const;
