@@ -1,7 +1,11 @@
-export default defineNuxtRouteMiddleware(() => {
- const user = useUser();
+export default defineNuxtRouteMiddleware((to, from) => {
+  const user = useUser();
 
- if(!user.value) {
-  return navigateTo(APP_ROUTES.LOGIN)
- }
+  if (to.fullPath === APP_ROUTES.LOGIN && user.value) {
+    return navigateTo(from.fullPath);
+  } 
+
+  if (to.fullPath !== APP_ROUTES.LOGIN && !user.value) {
+    return navigateTo(APP_ROUTES.LOGIN);
+  }
 });

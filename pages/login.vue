@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['auth-check']
+})
+
 const { $api } = useNuxtApp();
 const user = useUser();
 const token = useCookie('token', {
@@ -11,14 +15,14 @@ const isPasswordVisible = ref<boolean>(false);
 const email = ref<string>('');
 const password = ref<string>('');
 
-const onSubmit = async () => {
-  const credentials = {
-    email: email.value,
-    password: password.value,
-  };
+const route = useRoute();
 
+const onSubmit = async () => {
   $api
-    .login(credentials)
+    .login({
+      email: email.value,
+      password: password.value,
+    })
     .then((res) => {
       token.value = res.token;
       user.value = res.user;
@@ -26,6 +30,13 @@ const onSubmit = async () => {
     .then(() => {
       email.value = '';
       password.value = '';
+    })
+    .then(() => {
+      if (route.redirectedFrom) {
+        navigateTo(route.redirectedFrom.fullPath);
+      } else {
+        navigateTo(APP_ROUTES.ROOT);
+      }
     })
     .catch((e) => {
       console.error(e);

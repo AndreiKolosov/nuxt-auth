@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const user = useUser();
+useHead({
+  title: 'Nuxt Auth Example',
+  htmlAttrs: {
+    lang: 'ru',
+  },
+});
 </script>
 
 <template>
